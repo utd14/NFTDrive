@@ -1,0 +1,33 @@
+{
+  "name": "auto_hub",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "dev": "nodemon app"
+  },
+  "author": "Dana Uteusheva",
+  "license": "ISC",
+  "dependencies": {
+    "@truffle/hdwallet-provider": "^2.1.15",
+    "axios": "^1.6.7",
+    "bcrypt": "^5.1.1",
+    "body-parser": "^1.20.2",
+    "cookie-parser": "^1.4.6",
+    "dotenv": "^16.5.0",
+    "ejs": "^3.1.9",
+    "ethereumjs-tx": "^2.1.2",
+    "express": "^4.18.2",
+    "formidable": "^3.5.1",
+    "fs": "^0.0.1-security",
+    "jsonwebtoken": "^9.0.2",
+    "mongoose": "^8.2.0",
+    "multer": "^1.4.5-lts.1",
+    "nodemailer": "^6.9.11",
+    "nodemon": "^3.1.0",
+    "path": "^0.12.7",
+    "solc": "^0.8.29",
+    "truffle": "^5.11.5",
+    "web3": "^4.16.0"
+  }
+}

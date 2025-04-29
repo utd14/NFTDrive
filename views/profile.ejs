@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/css/style.css">
+		<link rel="stylesheet" href="/css/bootstrap.min.css">
+		<link rel="icon" type="image/x-icon" href="/img/logo.png">
+		<title>AutoHub</title>
+</head>
+<body>
+	<%- include('./partials/header.ejs') %>
+    <div class="container mt-5">
+				<div class="space"></div>
+        <h2>Profile</h2>
+        <ul class="nav nav-tabs" id="profileTabs" role="tablist">
+						<% if(admin){%>
+						<li class="nav-item">
+								<a class="nav-link active" id="orders-tab" data-toggle="tab" href="#orders" role="tab" aria-controls="orders" aria-selected="false">Cars</a>
+						</li>
+						<%}else{%>
+						<li class="nav-item">
+							<a class="nav-link active" id="favorite-tab" data-toggle="tab" href="#favorite" role="tab" aria-controls="favorite" aria-selected="false">Favorite</a>
+						</li>
+						<%}%>
+						<li class="nav-item">
+							<a class="nav-link" id="info-tab" data-toggle="tab" href="#info" role="tab" aria-controls="info" aria-selected="true">Info</a>
+					</li>
+        </ul>
+        <div class="tab-content" id="profileTabsContent">
+            <div class="tab-pane fade" id="info" role="tabpanel" aria-labelledby="info-tab">
+                <div class="card mt-3">
+                    <div class="card-body">
+                        <h5 class="card-title">Personal Information</h5>
+                        <p class="card-text">Name: <%= user.firstName %></p>
+                        <p class="card-text">Surname: <%= user.lastName %></p>
+                        <p class="card-text">Email: <%= user.email %></p>
+                        <p class="card-text">Age: <%= user.age %></p>
+                        <p class="card-text">Phone: <%= user.phoneNumber %></p>
+                        <p class="card-text">Gender: <%if(user.gender){%> Male <%}else{%> Female <%}%></p>
+                    </div>
+                </div>
+            </div>
+						<% if(admin){%>
+							<div class="tab-pane fade active show" id="orders" role="tabpanel" aria-labelledby="orders-tab">
+								<div class="card mt-3">
+									<div class="card-body">
+									  <h5 class="card-title">NFTs <a href="/cars/create" class="ms-5 btn btn-success">Mint</a></h5>
+									  <table class="table">
+																<thead>
+																	<tr>
+																		<th scope="col">#</th>
+																		<th scope="col">NFT Name</th>
+																		<th scope="col">Creator Name</th>
+																		<th scope="col">Wallet Address</th>
+																		<th scope="col">Price (ETH)</th>
+																		<th scope="col"></th>
+																	</tr>
+																</thead>
+																<tbody>
+																	<% if(cars!=null){
+																		var i = 1;
+																		cars.forEach(function(car){ %>
+																		<tr>
+																			<th scope="row"><%= i++%></th>
+																			<td><%= car.name %></td>
+																			<td><%= car.ownerName %></td>
+																			<td><%= car.phoneNumber %></td>
+																			<td><%= car.price %></td>
+																			<td><a href="/cars/<%= car._id %>" class="btn btn-primary me-3">View</a><a href="/cars/<%= car._id %>/update" class="btn btn-secondary me-3">Edit</a><a href="/cars/<%= car._id%>/delete" class="btn btn-danger">Delete</a></td>
+																		</tr>
+																	<% })} %>
+																</tbody>
+															</table>  
+									</div>
+								</div>
+							</div>
+						<% }else{ %>
+							<div class="tab-pane fade active show" id="favorite" role="tabpanel" aria-labelledby="favorite-tab">
+								<div class="card mt-3">
+										<div class="card-body">
+											<h5 class="card-title">Favorite</h5>
+											<table class="table">
+												<thead>
+													<tr>
+														<th scope="col">#</th>
+														<th scope="col">NFT Name</th>
+														<th scope="col">Creator Name</th>
+														<th scope="col">Wallet Address</th>
+														<th scope="col">Price (ETH)</th>
+														<th scope="col"></th>
+													</tr>
+												</thead>
+												<tbody>
+													<% if(favs!=null){
+														var i = 1;
+														favs.forEach(function(car){ %>
+														<tr>
+															<th scope="row"><%= i++%></th>
+															<td><%= car.name %></td>
+															<td><%= car.ownerName %></td>
+															<td><%= car.phoneNumber %></td>
+															<td><%= car.price %></td>
+															<td><a href="/cars/<%= car._id %>" class="btn btn-primary me-3">View</a><a href="/unfav/<%= car._id%>" class="btn btn-danger">Remove</a></td>
+														</tr>
+													<% })} %>
+												</tbody>
+											</table>  
+										</div>
+								</div>
+							</div>
+						<% } %>
+        </div>
+    </div>
+
+		<script src="/js/bootstrap.bundle.min.js"></script>
+		<script src="/js/jquery-3.7.1.min.js"></script>
+    <script>
+        $(document).ready(function () {
+            $('#profileTabs a').on('click', function (event) {
+                event.preventDefault();
+                $(this).tab('show');
+            });
+        });
+    </script>
+		<div class="space"></div>
+		<div class="space"></div>
+		<div class="space"></div>
+	<%- include('./partials/footer.ejs')%>
+
+</body>
+</html>

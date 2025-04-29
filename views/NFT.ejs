@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<link rel="stylesheet" href="/css/style.css">
+	<link rel="stylesheet" href="/css/bootstrap.min.css">
+	<link rel="icon" type="image/x-icon" href="/img/logo.png">
+	<title>AutoHub</title>
+</head>
+<body>
+	<!-- Telegram button -->
+	<div class="rounded-circle position-fixed btn_telegram d-flex justify-content-center">
+		<a id="telegram" href="https://t.me/" class="text-decoration-none align-self-center">
+			<svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" fill="white" class="bi bi-telegram" viewBox="0 0 16 16">
+				<path d="M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0zM8.287 5.906c-.778.324-2.334.994-4.666 2.01-.378.15-.577.298-.595.442-.03.243.275.339.69.47l.175.055c.408.133.958.288 1.243.294.26.006.549-.1.868-.32 2.179-1.471 3.304-2.214 3.374-2.23.05-.012.12-.026.166.016.047.041.042.12.037.141-.03.129-1.227 1.241-1.846 1.817-.193.18-.33.307-.358.336a8.154 8.154 0 0 1-.188.186c-.38.366-.664.64.015 1.088.327.216.589.393.85.571.284.194.568.387.936.629.093.06.183.125.27.187.331.236.63.448.997.414.214-.02.435-.22.547-.82.265-1.417.786-4.486.906-5.751a1.426 1.426 0 0 0-.013-.315.337.337 0 0 0-.114-.217.526.526 0 0 0-.31-.093c-.3.005-.763.166-2.984 1.09z"/>
+			</svg>
+		</a>
+	</div>
+
+	<%- include('./partials/header.ejs') %>
+	
+	<main id="car">
+		<div class="container my-5">
+			<div class="space"></div>
+			<div class="row">
+				<div class="col-md-6">
+					<div id="carouselExampleIndicators" class="carousel slide" data-bs-ride="carousel">
+						<div class="carousel-inner">
+							<% if(!car.img1 && !car.img2 && !car.img3) { %>
+								<div class="carousel-item">
+									<img src="/img/car.jpg" class="d-block w-100" alt="img">
+								</div>
+							<% } if(car.img1){ %>
+							<div class="carousel-item">
+								<img src="\<%= car.img1 %>" class="d-block w-100" alt="img">
+							</div>
+							<% } if(car.img2){ %>
+							<div class="carousel-item">
+								<img src="\<%= car.img2 %>" class="d-block w-100" alt="img">
+							</div>
+							<% } if(car.img3){ %>
+							<div class="carousel-item">
+								<img src="\<%= car.img3 %>" class="d-block w-100" alt="img">
+							</div>
+							<% } %>
+						</div>
+						<button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="prev">
+							<span class="carousel-control-prev-icon" aria-hidden="true"></span>
+							<span class="visually-hidden">Previous</span>
+						</button>
+						<button class="carousel-control-next" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="next">
+							<span class="carousel-control-next-icon" aria-hidden="true"></span>
+							<span class="visually-hidden">Next</span>
+						</button>
+					</div>
+				</div>
+				<div class="col-md-6">
+					<h2><%= car.name %> 
+						<% if(flag){ %>
+						<img src="<%= flag %>" alt="flag">
+						<%}%>
+					</h2>
+					<p><%= car.description%></p>
+					<p class="fw-bold">Price: <%= car.price%>ETH</p>
+					<p class="fw-bold">Collection: <%= car.brand%></p>
+					<p class="fw-bold">Category: <%= car.type%></p>
+					<% if(admin) {%>
+					<p class="fw-bold">Phone number: <%= car.phoneNumber%></p>
+					<p class="fw-bold">Owner's name: <%= car.ownerName%></p>
+					<% } %>
+					<% if(logo){ %>
+					<img width="60px" class="my-3" src="<%= logo[0].image %>" alt="logo">
+					<% } %>
+					<div>
+						<% if(!admin){%>
+						<button id="btn-show" class="btn btn-primary me-4">Owner's contact</button>
+						<% if(fav){%>
+						<a href="/unfav/<%= car._id %>" class="me-4"><img src="/img/unfav.png" width="50px" alt="fav"></a>
+						<% }else{%>
+						<a href="/fav/<%= car._id %>" class="me-4"><img src="/img/fav.png" width="50px" alt="fav"></a>
+						<% }} %>
+						<% if(admin){%>
+						<a class="btn btn-secondary me-4" href="/cars/<%= car._id %>/update">Edit</a>
+						<a class="btn btn-danger" href="/cars/<%= car._id %>/delete">Delete</a>
+						<% } %>
+						<p class="fw-bold mt-3 owner visually-hidden">Phone number: <%= car.phoneNumber %></p>
+						<p class="fw-bold owner visually-hidden">Owner's name: <%= car.ownerName %></p>
+					</div>
+				</div>
+			</div>
+		</div>
+		
+		<div class="space"></div>
+	</main>
+	
+	<!-- JavaScript -->
+	<script src="/js/bootstrap.bundle.min.js"></script>
+	<script src="/js/jquery-3.7.1.min.js"></script>
+	<script>
+		// Find all elements with the class 'carousel-item'
+		const carouselItems = document.getElementsByClassName('carousel-item');
+
+		// Check if there are any elements found
+		if (carouselItems.length > 0) {
+				// Add 'active' class to the first element
+				carouselItems[0].classList.add('active');
+		}
+
+		$("#btn-show").click(function(){
+			$(".owner").toggleClass("visually-hidden");
+		});
+	</script>
+	<%- include('./partials/footer.ejs')%>
+</body>
+</html>

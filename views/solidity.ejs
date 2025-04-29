@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+<%- include('./partials/head.ejs') %>
+<body>
+    <%- include('./partials/nav.ejs') %>
+    
+    <div class="container mt-5">
+        <h1>Solidity Smart Contract Explorer</h1>
+        <p>Explore and compile Ethereum smart contracts for vehicle ownership management.</p>
+        
+        <div class="row">
+            <div class="col-md-8">
+                <div class="card">
+                    <div class="card-header">
+                        <h4>Car Ownership Smart Contract</h4>
+                    </div>
+                    <div class="card-body">
+                        <form id="contractForm">
+                            <div class="form-group">
+                                <textarea id="contractCode" class="form-control" style="height: 400px; font-family: monospace;"><%= sampleContract %></textarea>
+                            </div>
+                            <button type="submit" class="btn btn-primary mt-3">Compile Contract</button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="col-md-4">
+                <div class="card">
+                    <div class="card-header">
+                        <h4>Compilation Result</h4>
+                    </div>
+                    <div class="card-body" id="result">
+                        <p>Compile the contract to see results here.</p>
+                    </div>
+                </div>
+                
+                <div class="card mt-4">
+                    <div class="card-header">
+                        <h4>What is Solidity?</h4>
+                    </div>
+                    <div class="card-body">
+                        <p>Solidity is a programming language for implementing smart contracts on blockchain platforms like Ethereum.</p>
+                        <p>Smart contracts can be used to manage vehicle ownership, transfers, and history in a transparent and immutable way.</p>
+                        <p><a href="https://docs.soliditylang.org/" target="_blank">Learn more about Solidity</a></p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <script>
+        document.getElementById('contractForm').addEventListener('submit', async (e) => {
+            e.preventDefault();
+            
+            const contractCode = document.getElementById('contractCode').value;
+            const resultDiv = document.getElementById('result');
+            
+            resultDiv.innerHTML = '<p>Compiling...</p>';
+            
+            try {
+                const response = await fetch('/solidity/compile', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json'
+                    },
+                    body: JSON.stringify({ contractCode })
+                });
+                
+                const data = await response.json();
+                
+                if (data.success) {
+                    resultDiv.innerHTML = `
+                        <div class="alert alert-success">Compilation successful!</div>
+                        <p><strong>Contract ABI:</strong></p>
+                        <pre style="max-height: 150px; overflow-y: auto;">${JSON.stringify(data.abi, null, 2)}</pre>
+                        <p><strong>Bytecode:</strong></p>
+                        <pre style="max-height: 100px; overflow-y: auto;">${data.bytecode.substring(0, 100)}...</pre>
+                    `;
+                } else {
+                    resultDiv.innerHTML = `
+                        <div class="alert alert-danger">Compilation failed!</div>
+                        <p><strong>Errors:</strong></p>
+                        <pre>${JSON.stringify(data.errors || data.error, null, 2)}</pre>
+                    `;
+                }
+            } catch (error) {
+                resultDiv.innerHTML = `
+                    <div class="alert alert-danger">Error: ${error.message}</div>
+                `;
+            }
+        });
+    </script>
+    
+    <%- include('./partials/footer.ejs') %>
+</body>
+</html>

@@ -1,0 +1,60 @@
+<!-- Header -->
+<header>
+	<nav class="navbar fixed-top navbar-dark color4">
+		<div class="container-xl">
+			<div class="d-flex align-items-center">
+				<a class="navbar-brand d-inline-block" href="/">
+					<img src="/img/logo.png" alt="Logo" width="70" height="70" class="d-inline-block align-text-top">
+				</a>
+				<a class="btn btn-dark d-xl-none" data-bs-toggle="offcanvas" href="#offcanvasExample" role="button" aria-controls="offcanvasExample">
+					☰
+				</a>
+				<%if(auth) {%>
+				<a class="navbar-brand d-none d-xl-inline me-5" href="/cars">Collections</a>
+				<%}%>
+				<a class="navbar-brand d-none d-xl-inline me-5" href="/service">Marketplace</a>
+				<a class="navbar-brand d-none d-xl-inline" href="/about_us">About us</a>
+			</div>
+			<h2 id="title">NFTDrive</h2>
+			<%if(auth) {%>
+				<div class="dropdown">
+					<button class="btn btn-dark	 dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+						<%= user.email %>
+					</button>
+					<ul class="dropdown-menu">
+						<li><a class="dropdown-item" href="/profile">Profile</a></li>
+						<li><a class="dropdown-item" href="/log_out">Log out</a></li>
+					</ul>
+				</div>
+			<%}else{%>
+			<div>
+				<a href="/sign_in" class="navbar-brand d-none d-xl-inline me-5">Sign in</a>
+				<a href="/sign_up" class="navbar-brand d-none d-xl-inline">Sign up</a>
+			</div>
+			<%}%>
+		</div>
+	</nav>
+</header>
+
+<!-- Main offcanvas -->
+<div class="offcanvas offcanvas-end color4 text-white" tabindex="-1" id="offcanvasExample" aria-labelledby="offcanvasExampleLabel">
+	<div class="offcanvas-header">
+		<h2 class="offcanvas-title" id="offcanvasExampleLabel">Menu</h2>
+		<button type="button" class="btn-close btn-close-white" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+	</div>
+	<div class="offcanvas-body">
+		<div>
+			<ul class="list-group">
+				<li class="list-group-item"><a href="/" class="d-block">Main</a></li>
+				<li class="list-group-item"><a href="/service" class="d-block">Marketplace</a></li>
+				<li class="list-group-item"><a href="/about_us" class="d-block">About us</a></li>
+				<%if(auth) {%>
+				<li class="list-group-item"><a href="/cars" class="d-block">Collections</a></li>
+				<%}else{%>
+				<li class="list-group-item"><a href="/sign_in" class="d-block">Sign In</a></li>
+				<li class="list-group-item"><a href="/sign_up" class="d-block">Sign Up</a></li>
+				<%}%>
+			</ul>
+		</div>
+	</div>
+</div>

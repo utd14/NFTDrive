@@ -1,0 +1,263 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<link rel="stylesheet" href="/css/style.css">
+	<link rel="stylesheet" href="/css/bootstrap.min.css">
+	<link rel="icon" type="image/x-icon" href="/img/logo.png">
+	<title>AutoHub</title>
+</head>
+
+<body>
+	<!-- Telegram button -->
+	<div class="rounded-circle position-fixed btn_telegram d-flex justify-content-center">
+		<a id="telegram" href="https://t.me/" class="text-decoration-none align-self-center">
+			<svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" fill="white" class="bi bi-telegram"
+				viewBox="0 0 16 16">
+				<path
+					d="M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0zM8.287 5.906c-.778.324-2.334.994-4.666 2.01-.378.15-.577.298-.595.442-.03.243.275.339.69.47l.175.055c.408.133.958.288 1.243.294.26.006.549-.1.868-.32 2.179-1.471 3.304-2.214 3.374-2.23.05-.012.12-.026.166.016.047.041.042.12.037.141-.03.129-1.227 1.241-1.846 1.817-.193.18-.33.307-.358.336a8.154 8.154 0 0 1-.188.186c-.38.366-.664.64.015 1.088.327.216.589.393.85.571.284.194.568.387.936.629.093.06.183.125.27.187.331.236.63.448.997.414.214-.02.435-.22.547-.82.265-1.417.786-4.486.906-5.751a1.426 1.426 0 0 0-.013-.315.337.337 0 0 0-.114-.217.526.526 0 0 0-.31-.093c-.3.005-.763.166-2.984 1.09z" />
+			</svg>
+		</a>
+	</div>
+
+	<%- include('./partials/header.ejs') %>
+
+		<main>
+			<!-- Slide carousel -->
+			<div class="space"></div>
+			<div id="carousel" class="carousel slide carousel-fade mt-4">
+				<div class="carousel-indicators">
+					<button type="button" data-bs-target="#carousel" data-bs-slide-to="0" class="active"
+						aria-current="true" aria-label="Slide 1"></button>
+					<button type="button" data-bs-target="#carousel" data-bs-slide-to="1" aria-label="Slide 2"></button>
+					<button type="button" data-bs-target="#carousel" data-bs-slide-to="2" aria-label="Slide 3"></button>
+				</div>
+				<div class="carousel-inner">
+					<div class="carousel-item active">
+						<img src="/img/preview_1.jpg" class="d-block w-100" alt="...">
+					</div>
+					<div class="carousel-item">
+						<img src="/img/preview_2.jpg" class="d-block w-100" alt="...">
+					</div>
+					<div class="carousel-item">
+						<img src="/img/preview_3.jpg" class="d-block w-100" alt="...">
+					</div>
+				</div>
+				<button class="carousel-control-prev" type="button" data-bs-target="#carousel" data-bs-slide="prev">
+					<span class="carousel-control-prev-icon" aria-hidden="true"></span>
+					<span class="visually-hidden">Previous</span>
+				</button>
+				<button class="carousel-control-next" type="button" data-bs-target="#carousel" data-bs-slide="next">
+					<span class="carousel-control-next-icon" aria-hidden="true"></span>
+					<span class="visually-hidden">Next</span>
+				</button>
+			</div>
+			<div id="clouds" class="container-xxl py-5">
+				<h1 class="text-center mb-5">Welcome to our NFT Marketplace</h1>
+				<div id="cloud1" class="row mt-5 d-flex align-items-center">
+					<div class="col-lg-6 mt-3">
+						<div class="cloud shadow-lg left">
+							<h2>Our NFTs</h2>
+							<p class="pt-4">We have NFT solutions for everyone</p>
+						</div>
+					</div>
+					<div class="col-lg-6 mt-3">
+						<div class="photo_box shadow-lg right">
+							<img src="/img/photo_1.jpg" class="img-fluid">
+						</div>
+					</div>
+				</div>
+				<div id="cloud2" class="row mt-5 d-flex align-items-center even">
+					<div class="col-lg-6 mt-3">
+						<div class="cloud shadow-lg right">
+							<h2>Verified Authenticity</h2>
+							<p class="pt-4">All our products are authentic and verified</p>
+						</div>
+					</div>
+					<div class="col-lg-6 mt-3">
+						<div class="photo_box shadow-lg left">
+							<img src="/img/photo_2.png" class="img-fluid">
+						</div>
+					</div>
+				</div>
+				<div id="cloud3" class="row mt-5 d-flex align-items-center">
+					<div class="col-lg-6 mt-3">
+						<div class="cloud shadow-lg left">
+							<h2>Simple Minting Process</h2>
+							<p class="pt-4">We value your time and make the process as convenient as possible. Our
+								experienced staff is ready to answer all your questions, help with financing and offer
+								favorable exchange conditions.</p>
+						</div>
+					</div>
+					<div class="col-lg-6 mt-3">
+						<div class="photo_box shadow-lg right">
+							<img src="/img/photo_3.jpg" class="img-fluid">
+						</div>
+					</div>
+				</div>
+				<div id="cloud4" class="row mt-5 d-flex align-items-center even">
+					<div class="col-lg-6 mt-3">
+						<div class="cloud shadow-lg right">
+							<h2>Exclusive Drops and Offers</h2>
+							<p class="pt-4">We are constantly updating our promotions and special offers to ensure you
+								get the most out of our service. Subscribe to our newsletter and stay tuned to be the
+								first to know about the best offers</p>
+						</div>
+					</div>
+					<div class="col-lg-6 mt-3">
+						<div class="photo_box shadow-lg left">
+							<img src="/img/photo_4.jpg" class="img-fluid">
+						</div>
+					</div>
+				</div>
+				<div id="cloud5" class="row mt-5 d-flex align-items-center">
+					<div class="col-lg-6 mt-3">
+						<div class="cloud shadow-lg left">
+							<h2>Ownership Benefits</h2>
+							<p class="pt-4">Our concern for you does not end after your purchase. Our services come with
+								benefits for you.</p>
+						</div>
+					</div>
+					<div class="col-lg-6 mt-3">
+						<div class="photo_box shadow-lg right">
+							<img src="/img/photo_5.jpg" class="img-fluid">
+						</div>
+					</div>
+				</div>
+			</div>
+
+			<div id="steps" class="p-5">
+				<div class="container-xxl text-white">
+					<h1 class="text-center my-5">NFT Acquisition Process</h1>
+					<div class="row">
+						<div class="col-xl-4 col-md-6 p-5">
+							<div class="box_shadow">
+								<div class="box">
+									<div class="photo_box">
+										<img src="/img/step_1.png" class="img-fluid">
+									</div>
+									<div class="text_box">
+										<h3 class="text-center">Selecting a product</h3>
+										<p>Check out our diverse range of products. Use convenient filters on our
+											website to find an item that meets your requirements.</p>
+									</div>
+								</div>
+							</div>
+						</div>
+						<div class="col-xl-4 col-md-6 p-5">
+							<div class="box_shadow">
+								<div class="box">
+									<div class="photo_box">
+										<img src="/img/step_2.png" class="img-fluid">
+									</div>
+									<div class="text_box">
+										<h3 class="text-center">Preview Collection</h3>
+										<p>Before making a final decision, we encourage you to explore the collection
+											details. Experience the artwork quality, authenticity verification, and
+											unique attributes of our NFTs.</p>
+									</div>
+								</div>
+							</div>
+						</div>
+						<div class="col-xl-4 col-md-6 p-5">
+							<div class="box_shadow">
+								<div class="box">
+									<div class="photo_box">
+										<img src="/img/step_3.png" class="img-fluid">
+									</div>
+									<div class="text_box">
+										<h3 class="text-center">Consultation with a Crypto Expert</h3>
+										<p>Our experienced blockchain specialists are ready to answer all your questions, provide additional information about the chosen NFT, and explain available wallet integration options.</p>
+									</div>
+								</div>
+							</div>
+						</div>
+						<div class="col-xl-4 col-md-6 p-5">
+							<div class="box_shadow">
+								<div class="box">
+									<div class="photo_box">
+										<img src="/img/step_4.png" class="img-fluid">
+									</div>
+									<div class="text_box">
+										<h3 class="text-center">Blockchain Transaction</h3>
+										<p>When you have chosen your ideal NFT, the minting process begins. We offer transparent and understandable terms of purchase, with minimal gas fees. Our specialists can guide you through wallet setup and the most efficient payment methods.</p>
+									</div>
+								</div>
+							</div>
+						</div>
+						<div class="col-xl-4 col-md-6 p-5">
+							<div class="box_shadow">
+								<div class="box">
+									<div class="photo_box">
+										<img src="/img/step_5.png" class="img-fluid">
+									</div>
+									<div class="text_box">
+										<h3 class="text-center">Receiving Your NFT</h3>
+										<p>After completing the transaction on the blockchain, the NFT will appear in your digital wallet. Our team will also provide you with details about the artwork's provenance, authenticity, and special features.</p>
+									</div>
+								</div>
+							</div>
+						</div>
+						<div class="col-xl-4 col-md-6 p-5">
+							<div class="box_shadow">
+								<div class="box">
+									<div class="photo_box">
+										<img src="/img/step_6.png" class="img-fluid">
+									</div>
+									<div class="text_box">
+										<h3 class="text-center">Community Benefits</h3>
+										<p>We guarantee support after purchase. Our platform offers exclusive community access, creator updates, and opportunities to participate in future drops and special events related to your collection.</p>
+									</div>
+								</div>
+							</div>
+						</div>
+
+					</div>
+				</div>
+			</div>
+		</main>
+
+		<!-- JavaScript -->
+		<script src="/js/bootstrap.bundle.min.js"></script>
+		<script src="/js/jquery-3.7.1.min.js"></script>
+		<script>
+			$(document).ready(function () {
+				// clouds
+				var clouds = [630, 1180, 1720, 2360, 2900];
+				var scroll;
+				$(window).scroll(function () {
+					scroll = $(window).scrollTop();
+					console.log(scroll);
+					for (let i = 1; i <= 5; i++) {
+						if (scroll > clouds[i - 1]) {
+							$("#cloud" + i + " .left, #cloud" + i + " .right").animate({
+								left: '0',
+								right: '0',
+								opacity: 1
+							}, 1500)
+						}
+					}
+				})
+				// steps
+				$("#steps .box").mouseover(function () {
+					$(this).css({ "top": "-15px", "left": "-15px" })
+				})
+				$("#steps .box").mouseout(function () {
+					$(this).css({ "top": "-20px", "left": "-20px" })
+				})
+				// telegram
+				$("#telegram").mouseover(function () {
+					$(this).parent().css("transform", "scale(" + 1.3 + ")")
+				})
+				$("#telegram").mouseout(function () {
+					$(this).parent().css("transform", "scale(" + 1 + ")")
+				})
+			});
+		</script>
+
+		<%- include('./partials/footer.ejs')%>
+</body>
+
+</html>
